@@ -1,15 +1,14 @@
 const { Router } = require("express");
 const DevController = require("./controllers/DevController");
 const SearchController = require("./controllers/SearchController");
-
 const routes = Router();
 
-routes.get("/", (req, res) => {
-  return res.send("ok");
-});
-routes.get("/devs", DevController.index);
-routes.post("/devs", DevController.store);
+routes
 
-routes.get("/search", SearchController.index);
+  // DEVS Endpoint
+  .get("/devs", DevController.index)
+  .post("/devs", DevController.create)
+
+  .get("/search", SearchController.index);
 
 module.exports = routes;
