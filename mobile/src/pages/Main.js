@@ -52,7 +52,7 @@ function Main({ navigation }) {
       params: {
         latitude,
         longitude,
-        techs: "React,js"
+        techs: "React"
       }
     });
     setDevs(response.data.devs);

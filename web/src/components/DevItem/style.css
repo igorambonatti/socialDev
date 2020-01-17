@@ -14,11 +14,16 @@ li.dev-item header {
 li.dev-item header img {
     width: 54px;
     height: 54px;
-    border-radius: 50px;
+    border-radius: 50%;
 }
 
 li.dev-item header .user-info {
     margin-left: 10px;
+}
+
+li.dev-item header .icons {
+    float: right;
+    margin-left: auto;
 }
 
 .user-info strong {
@@ -44,6 +49,7 @@ li.dev-item a {
     color: #8e4dff;
     font-size: 14px;
     text-decoration: none;
+    transition: color 0.3s;
 }
 
 li.dev-item a:hover {

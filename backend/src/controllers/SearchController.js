@@ -1,14 +1,13 @@
-const Dev = require('../models/dev.js')
+const Dev = require('../models/Dev');
+const str2array = require('./utils/str2array');
 
 module.exports = {
-    async index(request, response) {
-        const { longitude, latitude, techs } = request.query
-
-        const techsArray = techs.split(',').map(tech => tech.trim())
+    async index(req, res){ // raio 10km + filtro de techs
+        const { latitude, longitude, techs } = req.query;
 
         const devs = await Dev.find({
             techs: {
-                $in: techsArray
+                $in: str2array(techs, true)
             },
             location: {
                 $near: {
@@ -19,8 +18,8 @@ module.exports = {
                     $maxDistance: 10000
                 }
             }
-        })
+        });
 
-        response.json(devs)
+        return res.json({devs});
     }
 }

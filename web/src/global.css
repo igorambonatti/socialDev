@@ -7,15 +7,19 @@
     box-sizing: border-box;
 }
 
+*:focus {
+    outline: 0;
+}
+
 html, body, #root {
     height: 100%;
 }
 
 body {
     background: #E5E6F0;
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased; /* Fonte mais legível no Chrome */
 }
 
-body, input, button {
+body, input, textarea, button {
     font-family: Roboto, sans-serif;
 }
