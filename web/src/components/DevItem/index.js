@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./style.css";
+import "./styles.css";
 
 function DevItem({ dev }) {
   return (
@@ -8,12 +8,14 @@ function DevItem({ dev }) {
       <header>
         <img src={dev.avatar_url} alt={dev.name} />
         <div className="user-info">
-          <strong>{dev.name ? dev.name : dev.github}</strong>
+          <strong>{dev.name ? dev.name : dev.github_username}</strong>
           <span>{dev.techs.join(", ")}</span>
         </div>
       </header>
       <p>{dev.bio}</p>
-      <a href={`https://github.com/${dev.github}`}>Acessar perfil no GitHub</a>
+      <a href={`https://github.com/${dev.github_username}`}>
+        Acessar perfil no Github
+      </a>
     </li>
   );
 }
