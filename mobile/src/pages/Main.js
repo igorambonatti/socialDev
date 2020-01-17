@@ -22,6 +22,7 @@ import {
 function Main({ navigation }) {
   const [currentRegion, setCurrentRegion] = useState(null);
   const [devs, setDevs] = useState([]);
+  const [techs, setTechs] = useState("");
 
   useEffect(() => {
     async function loadInitialPosition() {
@@ -52,7 +53,7 @@ function Main({ navigation }) {
       params: {
         latitude,
         longitude,
-        techs: "React"
+        techs
       }
     });
     setDevs(response.data.devs);
@@ -90,13 +91,13 @@ function Main({ navigation }) {
             <Callout
               onPress={() => {
                 navigation.navigate("Profile", {
-                  github_username: dev.github_username
+                  github_username: dev.github
                 });
               }}
             >
               <View style={styles.callout}>
                 <Text style={styles.devName}>
-                  {dev.name ? dev.name : dev.github_username}
+                  {dev.name ? dev.name : dev.github}
                 </Text>
                 <Text style={styles.devBio}>{dev.bio}</Text>
                 <Text style={styles.devTechs}>{dev.techs.join(", ")}</Text>
@@ -112,6 +113,8 @@ function Main({ navigation }) {
           placeholderTextColor="#999"
           autoCapitalize="words"
           autoCorrect={false}
+          value={techs}
+          onChangeText={setTechs}
         />
         <TouchableOpacity onPress={loadDevs} style={styles.loadButton}>
           <MaterialIcons name="my-location" size={20} color="#fff" />
